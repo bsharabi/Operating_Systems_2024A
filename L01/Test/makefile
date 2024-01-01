@@ -6,6 +6,7 @@ main: first.c first.h
 	$(CC) $(FLAGS) -o main first.c
 
 
+
 run:
 	./main
 
