@@ -1,0 +1,7 @@
+
+/*
+
+dddd
+
+*/
+void func();
