@@ -13,6 +13,7 @@ main.o: main.c mat.h
 
 run:
 	./main
+	
 .PHONY: clean
 clean:
 	rm -f *.o *.a *.so main
