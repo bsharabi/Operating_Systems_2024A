@@ -3,7 +3,9 @@
 
 int main()
 {
-    factorial(4);
+    int ans = factorial(4);
+    printf("%d\n",ans);
+    
     printf("Hello World\n");
     /* code */
     return 0;

@@ -1,14 +1,26 @@
 #include "math.h"
 
-int main(int argc, char const *argv[])
+int factorial(int n)
 {
+    int mul = 1;
 
-    factorial(4);
-    return 0;
+    for (int i = 1; i <=n; i++)
+    {
+      mul*=i;
+    }
+
+    return mul;
+    
 }
-
-int factorial(int n){
-
-    return 0;
+int _pow(int base, int exp){
+return 0;
 }
-
+int sum(int n){
+return 0;
+}
+int max(int a, int b){
+return 0;
+}
+int min(int a, int b){
+return 0;
+}
