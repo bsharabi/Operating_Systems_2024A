@@ -2,6 +2,7 @@
 #define SIZE 8
 int main()
 {
+    
     int arr[SIZE];
 
     printf("\n%p", arr);

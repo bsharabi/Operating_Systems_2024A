@@ -1,12 +1,21 @@
-CC = gcc
-FLAGS = -Wall -g 
+FLAGS =-Wall -g
+CC = gcc #if we want to change compiler
 
-run: run1
-	$(CC) $(FLAGS) a.c -o main2.o
+all: main
 
-run1:
-	echo barak
+main:main.o  mat.o
+	$(CC) $(FLAGS) -o main main.o mat.o
 
 
+main.o: main.c mat.h
+	$(CC) $(FLAGS) -c main.c 
+
+
+mat.o: mat.c mat.h
+	$(CC) $(FLAGS) -c mat.c 	
+
+run:
+	./main
+.PHONY: clean
 clean:
-	rm -f *.o *.out main main2
+	rm -f *.o *.a *.so main
