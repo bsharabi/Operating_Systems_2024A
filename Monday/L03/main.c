@@ -1,8 +1,8 @@
 #include <stdio.h>
-#define SIZE 8
+#define SIZE 4
 int main()
 {
-    
+  
     int arr[SIZE];
 
     printf("\n%p", arr);
@@ -15,7 +15,7 @@ int main()
     printf("\n%p\n", arr + 7);
     printf("\n%p\n", arr + 8);
 
-    printf("\n%d", arr[0]);
+    printf("\n%d", arr[0]); 
     printf("\n%d", arr[1]);
     printf("\n%d", arr[2]);
     printf("\n%d", arr[3]);
@@ -53,6 +53,5 @@ int main()
     
  
     
-
     return 0;
 }
