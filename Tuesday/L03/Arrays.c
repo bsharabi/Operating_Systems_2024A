@@ -6,8 +6,6 @@
 int main()
 {
     // int[] arr = new int[10];
-
-
     int arr[10];
 
     printf("%d\n", arr[0]);
@@ -31,11 +29,12 @@ int main()
    
     int arr1[SIZE] = {0, 2, 3, 4, 5, 7};
 
+
     printf("%ld\n",sizeof(int)); // 4
     printf("%ld\n",sizeof(float)); // 4
     printf("%ld\n",sizeof(double));// 8
     printf("%ld\n",sizeof(char));// 1
-    printf("%ld\n",sizeof(arr));// 4
+    printf("%ld\n",sizeof(arr));// ARR LEN = 10 * 4 = 40
     printf("%ld\n",sizeof(arr+1)); // 8
 
     while(0){
