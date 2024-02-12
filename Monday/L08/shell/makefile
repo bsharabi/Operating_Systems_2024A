@@ -2,10 +2,10 @@ FLAGS =-Wall -g
 CC = gcc #if we want to change compiler
 
 all: myShell
-	./myShell
+	valgrind --leak-check=full --error-exitcode=1 ./myShell
 
-myShell:myShell.o 
-	$(CC) $(FLAGS) -o myShell myShell.o 
+myShell:myShell.o myFunctionShell.o
+	$(CC) $(FLAGS) -o myShell myShell.o myFunctionShell.o
 
 
 myShell.o: myShell.c myShell.h
