@@ -1,5 +1,6 @@
 #include "myFunction.h"
 
+
 char *getInputFromUser()
 {
     char ch;
@@ -17,7 +18,7 @@ char *getInputFromUser()
 
     return str;
 }
-
+// עליכם לממש את הפונקציה strtok כלומר שהפונקציה הנ"ל תבצע בדיוק אותו הדבר רק בלי השימוש בפונקציה strtok
 char **splitArgument(char *str)
 {
     // str = cp file file file
@@ -39,7 +40,9 @@ char **splitArgument(char *str)
 
     return argumnts;
 }
-
+// בפונקציה הנ"ל קיבלנו את הנתיב ממנו אנחנו מריצים את התוכנית שלנו
+//  עליכם לשדרג את הנראות של הנתיב כך ש-בתחילת הנתיב יופיע שם המחשב (כמו בטרמינל המקורי) בסוף יופיע הסימן דולר
+//  ולאחר הדולר ניתן אפשרות למשתמש להזין מחרוזת מבלי שנרד שורה.
 void getLocation()
 {
     char location[BUFF_SIZE];
@@ -56,3 +59,7 @@ void getLocation()
         reset();
     }
 }
+
+
+// בכל שינוי יש לבצע קומיט מתאים העבודה מחייבת עבודה עם גיט.
+// ניתן להוסיף פונקציות עזר לתוכנית רק לשים לב שלא מוסיפים את חתימת הפונקציה לקובץ הכותרות
