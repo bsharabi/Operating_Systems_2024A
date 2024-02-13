@@ -9,6 +9,7 @@ int main()
     {
         char *str = inputFromUser();
         puts(str);
+        
         char ** argumnts = splitString(str);
         
         for (int i = 0; argumnts[i]!=NULL; i++)
@@ -18,6 +19,8 @@ int main()
             puts(argumnts[i]);
         
         }
+        free(str);
+        free(argumnts);
         break;
         
     }
