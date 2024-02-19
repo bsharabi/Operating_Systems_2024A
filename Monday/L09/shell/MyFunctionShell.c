@@ -35,7 +35,6 @@ char **splitString(char *str)
 
     return argumentArray;
 }
-
 void getLocation()
 {
     char location[256];
@@ -47,4 +46,24 @@ void getLocation()
     printf("\033[0;34m");
     printf("%s$ ", location);
     printf("\033[0m");
+}
+void logout(char* str)
+{
+    puts("logout");
+    free(str);
+    exit(0);
+}
+void echo()
+{
+
+    
+}
+void cd()
+{
+}
+void cp()
+{
+}
+void get_dir()
+{
 }
