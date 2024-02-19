@@ -35,6 +35,9 @@ char **splitString(char *str)
 
     return argumentArray;
 }
+// בפונקציה הנ"ל קיבלנו את הנתיב ממנו אנחנו מריצים את התוכנית שלנו
+//  עליכם לשדרג את הנראות של הנתיב כך ש-בתחילת הנתיב יופיע שם המחשב (כמו בטרמינל המקורי) בסוף יופיע הסימן דולר
+//  ולאחר הדולר ניתן אפשרות למשתמש להזין מחרוזת מבלי שנרד שורה.
 void getLocation()
 {
     char location[256];
@@ -47,23 +50,72 @@ void getLocation()
     printf("%s$ ", location);
     printf("\033[0m");
 }
-void logout(char* str)
+void logout(char *str)
 {
     puts("logout");
     free(str);
     exit(0);
 }
-void echo()
+void echo(char **arguments)
 {
+    int i = 1;
+    while (arguments[i] != NULL)
+        printf("%s ", arguments[i++]);
+    puts("");
+}
+// עליכם לטפל במצבים בהם המשתמש קולט נתיב שמתחיל בסוגריים למשל:
+// cd "/mnt/c/Users/ZAsus/OneDrive - Ariel University"
+// יש לשלוח את המחרוזת המתחילת בסוגר הראשון עד המחרוזת שנגמרת בסוגר שסוגר אותה וכל מצב אחר יש להחזיר הודעת שגיאה
+void cd(char **path)
+{
+    //[cd,"barak\0, shsh\0, shsh",Null]
+    // output -> "barak shsh shsh"
+    //[cd,"barak, shsh, shsh,Null]
+    // output -> print("bash: cd: "barak: No such file or directory\n")
 
-    
+    //   puts(arguments[1]);
+    //         int j = strlen(arguments[1]);
+    //         arguments[1][j] = ' ';
+    //         puts(arguments[1]);
+
+    //------------------ err ---------------------
+    // char* str = cd /mnt/c/Users/ZAsus/OneDrive - Ariel University
+    //[cd,/mnt/c/Users/ZAsus/OneDrive,-,Ariel,University]
+
+    // char* str = cd "/mnt/c/Users/ZAsus/OneDrive - Ariel University"
+    //[cd, "/mnt/c/Users/ZAsus/OneDrive, -, Ariel, University"]
+
+    // char* str = cd\0"/mnt/c/Users/ZAsus/OneDrive\0-\0Ariel\0University\0"
+    //[cd\0, "/mnt/c/Users/ZAsus/OneDrive\0, -\0, Ariel\0, University"\0]
+
+    if (chdir(path[1]) != 0)
+        printf("bash: cd: %s: No such file or directory\n", path[1]);
 }
-void cd()
+// לסדר את המצב בו קיבלתם שם של קובץ שמכיל רווחים גם ב-src  וגם ב- des
+void cp(char **arguments)
 {
+    char ch;
+    FILE *src, *des;
+    if ((src = fopen(arguments[1], "r")) == NULL)
+    {
+        puts("Error");
+        return;
+    }
+
+    if ((des = fopen(arguments[2], "a")) == NULL)
+    {
+        fclose(src);
+        puts("Error");
+        return;
+    }
+
+    while ((ch = fgetc(src)) != EOF)
+        fputc(ch, des);
+
+    fclose(src);
+    fclose(des);
 }
-void cp()
-{
-}
-void get_dir()
-{
-}
+
+
+// בכל שינוי יש לבצע קומיט מתאים העבודה מחייבת עבודה עם גיט.
+// ניתן להוסיף פונקציות עזר לתוכנית רק לשים לב שלא מוסיפים את חתימת הפונקציה לקובץ הכותרות
