@@ -3,7 +3,7 @@
 
 int main()
 {
-    
+
     welcome();
     while (1)
     {
@@ -18,9 +18,12 @@ int main()
             cd(arguments);
         else if (strcmp(input, "cp") == 0)
             cp(arguments);
+        else if (strcmp(input, "delete") == 0)
+            delete(arguments);
+        else if (strcmp(input, "dir") == 0)
+            get_dir();
         free(arguments);
         free(input);
-
     }
     return 1;
 }
@@ -30,3 +33,5 @@ void welcome()
 {
     puts("Welcome to my Shell");
 }
+
+
