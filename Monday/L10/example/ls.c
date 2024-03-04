@@ -27,6 +27,7 @@ int main(int argc, char const *argv[])
         else
             waitpid(pid, NULL, 0);
     }
+    wait(NULL);
     puts("ddddd");
     return 0;
 }

@@ -17,7 +17,6 @@ char *inputFromUser()
 }
 char **splitString(char *str)
 {
-
     char *subStr;
     subStr = strtok(str, " ");
     int argumentSize = 2;
@@ -32,7 +31,6 @@ char **splitString(char *str)
         *(argumentArray + index) = subStr;
     }
     *(argumentArray + index + 1) = NULL;
-
     return argumentArray;
 }
 // בפונקציה הנ"ל קיבלנו את הנתיב ממנו אנחנו מריצים את התוכנית שלנו
@@ -115,7 +113,5 @@ void cp(char **arguments)
     fclose(src);
     fclose(des);
 }
-
-
 // בכל שינוי יש לבצע קומיט מתאים העבודה מחייבת עבודה עם גיט.
 // ניתן להוסיף פונקציות עזר לתוכנית רק לשים לב שלא מוסיפים את חתימת הפונקציה לקובץ הכותרות

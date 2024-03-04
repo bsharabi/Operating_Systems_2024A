@@ -136,12 +136,29 @@ void systemCall(char **arg)
     if (pid == 0 && execvp(arg[0], arg) == -1)
         exit(1);
 }
-
-// cd ba kms
-// input =  ['c','d', '\0', ' ', ' ', ' ', ' ','"', 'b', 'a', '\0', 'k', 'm', 's','"',  '\0']
-//['"', 'b', 'a', ' ', 'k', 'm', 's','"',  '\0']
-// arguments[input,input+7,input+11,NULL]
-
-// cd "ba kms"
-// cd(arg[1][])
-// cp "bbb bbb" "bbb bb1"
+void mypipe(char **argv1, char **argv2)
+{
+    int fildes[2];
+    if (fork() == 0)
+    {
+        pipe(fildes);
+        if (fork() == 0)
+        {
+            /* first component of command line */
+            close(STDOUT_FILENO);
+            dup(fildes[1]);
+            close(fildes[1]);
+            close(fildes[0]);
+            /* stdout now goes to pipe */
+            /* child process does command */
+            execvp(argv1[0], argv1);
+        }
+        /* 2nd command component of command line */
+        close(STDIN_FILENO);
+        dup(fildes[0]);
+        close(fildes[0]);
+        close(fildes[1]);
+        /* standard input now comes from pipe */
+        execvp(argv2[0], argv2);
+    }
+}

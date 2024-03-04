@@ -35,7 +35,6 @@ char **splitString(char *str)
 
     return argumentArray;
 }
-
 void getLocation()
 {
     char location[256];

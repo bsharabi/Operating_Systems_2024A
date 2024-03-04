@@ -7,6 +7,7 @@ int main()
     welcome();
     while (1)
     {
+        int piping = 0;
         getLocation();
         char *input = getInputFromUser();
         if (strcmp(input, "exit") == 0 || strncmp(input, "exit ", 5) == 0)
@@ -22,6 +23,13 @@ int main()
             delete (arguments);
         else if (strcmp(input, "dir") == 0)
             get_dir();
+        else if (piping)
+        {
+            char *argv1[] = {arguments[0], NULL};
+            char *argv2[] = {arguments[2], arguments[3], NULL};
+            mypipe(argv1, argv2);
+            wait(NULL);
+        }
         else
         {
             systemCall(arguments);
@@ -32,8 +40,6 @@ int main()
     }
     return 1;
 }
-// יש לכתוב את פונקציית הברוכים הבאים כרצונכם אבל קצת יותר ממה שמוצג מטה לדוגמא:
-
 void welcome()
 {
     puts("Welcome to my Shell");
