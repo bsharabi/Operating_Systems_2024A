@@ -3,6 +3,7 @@
 
 int main()
 {
+
     welcome();
     while (1)
     {
@@ -20,13 +21,10 @@ int main()
             cp(arguments);
         else if (strcmp(input, "delete") == 0)
             delete (arguments);
-        else if (strcmp(input, "dir") == 0)
-            get_dir();
         else if (piping)
         {
-            char *argv1[] = {arguments[0], NULL};
-            char *argv2[] = {arguments[2], arguments[3], NULL};
-            mypipe(argv1, argv2);
+            arguments[piping] = NULL;
+            mypipe(arguments, arguments + piping + 1);
             wait(NULL);
         }
         else
